@@ -8,10 +8,23 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/main_edit"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tan.rzrpechhulpgo.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.example.tan.rzrpechhulpgo.DetailsRZRActivity"
+    tools:showIn="@layout/activity_details_rzr">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/info_bg"/>
+
+    <TextView
+        android:id="@+id/hyperlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:layout_below="@+id/imageView"
+        android:text="@string/RZR_info_link"
+        />
 
 </RelativeLayout>

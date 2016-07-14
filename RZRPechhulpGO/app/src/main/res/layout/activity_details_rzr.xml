@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.tan.rzrpechhulpgo.MainActivity">
+    tools:context="com.example.tan.rzrpechhulpgo.DetailsRZRActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -18,10 +18,10 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/toolbarcolor"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
+
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_main" />
-
+    <include layout="@layout/content_details_rzr" />
 
 
 </android.support.design.widget.CoordinatorLayout>
