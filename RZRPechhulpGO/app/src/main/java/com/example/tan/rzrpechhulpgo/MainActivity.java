@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         toolbar.setNavigationIcon(R.drawable.main_btn_info);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
