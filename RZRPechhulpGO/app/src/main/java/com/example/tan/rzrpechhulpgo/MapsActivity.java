@@ -35,12 +35,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationListener {
 
     private GoogleMap mMap;
-    GoogleApiClient mGoogleApiClient;
-    Location mLastLocation;
-    Marker mCurrLocationMarker;
-    LocationRequest mLocationRequest;
-    Geocoder geocoder;
-    List<android.location.Address> addresses;
+    private GoogleApiClient mGoogleApiClient;
+    private Location mLastLocation;
+    private Marker mCurrLocationMarker;
+    private LocationRequest mLocationRequest;
+    private Geocoder geocoder;
+    private List<android.location.Address> addresses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
