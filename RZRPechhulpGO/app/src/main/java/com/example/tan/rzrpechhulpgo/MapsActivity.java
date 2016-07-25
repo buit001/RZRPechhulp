@@ -2,13 +2,20 @@ package com.example.tan.rzrpechhulpgo;
 
 import android.*;
 import android.Manifest;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.*;
+import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -34,6 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
+    private static final int MY_PERMISSIONS_REQUEST_CALL = 1;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
@@ -41,21 +49,69 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationRequest mLocationRequest;
     private Geocoder geocoder;
     private List<android.location.Address> addresses;
+    private Button button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+        //check android version
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        button = (Button) findViewById(R.id.phoneCall);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buildAlertMessagePhoneCall();
+            }
+
+        });
     }
 
+    public void phoneCall() {
+        String number = "+319007788990";
+        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            String[] permissions = new String[]{Manifest.permission.CALL_PHONE};
+            ActivityCompat.requestPermissions(this, permissions, MY_PERMISSIONS_REQUEST_CALL);
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        startActivity(intent);
+    }
+
+    private void buildAlertMessagePhoneCall() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Voor dit nummer betaalt u uw gebruikelijke kosten")
+                .setCancelable(false)
+                .setPositiveButton("bellen", new DialogInterface.OnClickListener() {
+                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        phoneCall();
+                    }
+                })
+                .setNegativeButton("stop", new DialogInterface.OnClickListener() {
+                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
+                        dialog.dismiss();
+                    }
+                });
+        final AlertDialog alert = builder.create();
+        alert.show();
+    }
 
     /**
      * Manipulates the map once available.
@@ -126,7 +182,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //address tracking
         geocoder = new Geocoder(this, Locale.getDefault());
         try {
-            addresses = geocoder.getFromLocation(latitude,longitude,1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
+            addresses = geocoder.getFromLocation(latitude, longitude, 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,17 +190,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
         String city = addresses.get(0).getLocality();
-        String state = addresses.get(0).getAdminArea();
         String country = addresses.get(0).getCountryName();
         String postalCode = addresses.get(0).getPostalCode();
-        String knownName = addresses.get(0).getFeatureName(); // Only if available else return NULL
 
         //Place current location marker
         LatLng latLng = new LatLng(latitude, longitude);
         mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
                 .title("Uw Locatie")
-                .snippet(address + ", " + postalCode + " " + city + ", " + country ) // no idea to add multiple lines
+                .snippet(address + ", " + postalCode + " " + city + ", " + country) // no idea to add multiple lines
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.position(latLng);
@@ -225,6 +279,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 } else {
 
                     // Permission denied, Disable the functionality that depends on this permission.
+                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+
+            case MY_PERMISSIONS_REQUEST_CALL: {
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+
+                    }
+                } else {
                     Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
                 }
                 return;
