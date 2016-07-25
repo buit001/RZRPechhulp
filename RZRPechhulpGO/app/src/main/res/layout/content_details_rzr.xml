@@ -24,7 +24,8 @@
         android:layout_height="wrap_content"
         android:nestedScrollingEnabled="true"
         android:layout_below="@+id/imageView"
-        android:text="@string/RZR_info_link"
+        android:autoLink="web"
+        android:text="@string/RZR_info"
         />
 
 </RelativeLayout>

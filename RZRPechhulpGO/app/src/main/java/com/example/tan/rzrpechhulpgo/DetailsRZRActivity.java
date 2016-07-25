@@ -14,9 +14,6 @@ import org.w3c.dom.Text;
 
 public class DetailsRZRActivity extends AppCompatActivity {
 
-    //hyperlink
-    private TextView textView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +30,7 @@ public class DetailsRZRActivity extends AppCompatActivity {
             }
         });
 
-        textView =(TextView)findViewById(R.id.hyperlink);
-        textView.setClickable(true);
-        textView.setMovementMethod(LinkMovementMethod.getInstance());
-        String text = "<a href='http://www.rsr.nl'> www.rsr.nl </a>";
-        textView.setText(Html.fromHtml(text));
+
     }
 
 }
