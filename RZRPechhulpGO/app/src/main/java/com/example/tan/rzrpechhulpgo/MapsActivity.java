@@ -42,6 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LocationListener {
 
     private static final int MY_PERMISSIONS_REQUEST_CALL = 1;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
@@ -200,12 +201,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .title("Uw Locatie")
                 .snippet(address + ", " + postalCode + " " + city + ", " + country) // no idea to add multiple lines
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(latLng);
-        markerOptions.title("Uw Locatie");
-        markerOptions.snippet("address");
-        markerOptions.visible(true);
-        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker));
+
         mCurrLocationMarker.showInfoWindow();
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
@@ -217,7 +213,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
-    public static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
     public boolean checkLocationPermission() {
         if (ContextCompat.checkSelfPermission(this,
