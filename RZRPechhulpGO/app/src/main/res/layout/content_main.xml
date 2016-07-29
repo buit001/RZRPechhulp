@@ -20,5 +20,6 @@
         android:background="@drawable/rzr_location_button"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        />
 </RelativeLayout>

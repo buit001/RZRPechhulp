@@ -20,8 +20,8 @@ public class DetailsRZRActivity extends AppCompatActivity {
         setContentView(R.layout.activity_details_rzr);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationIcon(R.drawable.info_back_button);
+
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
