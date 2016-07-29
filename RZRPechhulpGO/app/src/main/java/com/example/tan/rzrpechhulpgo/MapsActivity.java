@@ -1,8 +1,6 @@
 package com.example.tan.rzrpechhulpgo;
 
-import android.*;
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -50,7 +48,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private LocationRequest mLocationRequest;
     private Geocoder geocoder;
     private List<android.location.Address> addresses;
-    private Button button;
+    private Button phoneCallButton;
 
 
     @Override
@@ -68,8 +66,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        button = (Button) findViewById(R.id.phoneCall);
-        button.setOnClickListener(new View.OnClickListener() {
+        phoneCallButton = (Button) findViewById(R.id.phoneCall);
+        phoneCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buildAlertMessagePhoneCall();
