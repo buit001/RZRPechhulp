@@ -87,15 +87,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buildAlertMessageNoGps() {
+        String gpsDisabledMessage = getString(R.string.gps_disabled_popup_message);
+        String gpsMessageConfirm = getString(R.string.gps_disabled_popup_message_confirm);
+        String gpsMessageDecline = getString(R.string.gps_disabled_popup_message_decline);
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Your GPS seems to be disabled, do you want to enable it?")
+        builder.setMessage(gpsDisabledMessage)
                 .setCancelable(false)
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                .setPositiveButton(gpsMessageConfirm, new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(gpsMessageDecline, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         finish();
                     }
@@ -105,15 +109,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buildAlertMessageNoConnection() {
+        String internetDisabledMessage = getString(R.string.internet_disabled_popup_message);
+        String internetMessageConfirm = getString(R.string.internet_disabled_popup_message_confirm);
+        String internetMessageDecline = getString(R.string.internet_disabled_popup_message_decline);
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("No internet connection could be established")
+        builder.setMessage(internetDisabledMessage)
                 .setCancelable(false)
-                .setPositiveButton("Try again", new DialogInterface.OnClickListener() {
+                .setPositiveButton(internetMessageConfirm, new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         onResume();
                     }
                 })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                .setNegativeButton(internetMessageDecline, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         finish();
                     }

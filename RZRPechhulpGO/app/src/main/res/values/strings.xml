@@ -1,14 +1,35 @@
 <resources>
-    <string name="app_name">RZRPechhulpGO</string>
+    <string name="app_name">RSR Revalidatieservice</string>
     <string name="action_settings">Settings</string>
     <string name="action_favorite">Info</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_details_rzr">DetailsRZRActivity</string>
-
-    <string name="RZR_info">Met de hulpmiddelen van RZR blijft u mobiel. RZR is de leverancier van hulpimiddelen in de regio Noordoost-Nederland.
+    <!--DetailsRzrActivity-->
+    <string name="rzr_info">Met de hulpmiddelen van RZR blijft u mobiel. RZR is de leverancier van hulpimiddelen in de regio Noordoost-Nederland.
         Gedegen kennis en jarenlange ervaring zit in ons DNA verweven. en leidt tot het beste advies.
         \n \nWilt u meer weten over onze producten en diensten, kijk dan op www.rsr.nl of bezoek onze showrooms in Silvolde en Nieuwleusen. We zijn iedere werkdag geopend van 8.00
         tot 17.00 uur. Hier kunt u diversze hulpmiddelen uitproberen en rustig bekijken wat goed bij uw situatie aansluit. Samen met u zoeken we naar het hulpmiddel dat bij u past.
         RSR maakt mensen mobiel.</string>
+
+    <!--MainActivity-->
+    <string name="gps_disabled_popup_message">Your GPS seems to be disabled, do you want to enable it?</string>
+    <string name="gps_disabled_popup_message_confirm">Yes</string>
+    <string name="gps_disabled_popup_message_decline">No</string>
+
+    <string name="internet_disabled_popup_message">No internet connection could be established</string>
+    <string name="internet_disabled_popup_message_confirm">Yes</string>
+    <string name="internet_disabled_popup_message_decline">No</string>
+
+    <!--MapsActivity-->
     <string name="title_activity_maps">Map</string>
+
+    <string name="phone_call_popup_message">Voor dit nummer betaalt u uw gebruikelijke kosten</string>
+    <string name="phone_call_popup_message_confirm">bellen</string>
+    <string name="phone_call_popup_message_decline">decline</string>
+
+    <string name="google_maps_address_window_title">Uw Locatie</string>
+
+    <string name="gps_permission_denied">permission denied</string>
+    <string name="phone_call_permission_denied">permission denied</string>
+    <string name="phone_number_rsr">+319007788990</string>
 </resources>

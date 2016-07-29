@@ -25,7 +25,7 @@
         android:nestedScrollingEnabled="true"
         android:layout_below="@+id/imageView"
         android:autoLink="web"
-        android:text="@string/RZR_info"
+        android:text="@string/rzr_info"
         />
 
 </RelativeLayout>

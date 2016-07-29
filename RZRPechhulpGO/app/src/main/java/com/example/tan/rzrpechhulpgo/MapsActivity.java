@@ -77,7 +77,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void phoneCall() {
-        String number = "+319007788990";
+        String number = getString(R.string.phone_number_rsr);
         Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + number));
         if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
@@ -95,15 +95,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private void buildAlertMessagePhoneCall() {
+        String alertMessage = getString(R.string.phone_call_popup_message);
+        String confirmMessage = getString(R.string.phone_call_popup_message_confirm);
+        String declineMessage = getString(R.string.phone_call_popup_message_decline);
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Voor dit nummer betaalt u uw gebruikelijke kosten")
+        builder.setMessage(alertMessage)
                 .setCancelable(false)
-                .setPositiveButton("bellen", new DialogInterface.OnClickListener() {
+                .setPositiveButton(confirmMessage, new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         phoneCall();
                     }
                 })
-                .setNegativeButton("stop", new DialogInterface.OnClickListener() {
+                .setNegativeButton(declineMessage, new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         dialog.dismiss();
                     }
@@ -186,18 +190,23 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        //start address
         String address = addresses.get(0).getAddressLine(0); // If any additional address line present than only, check with max available address lines by getMaxAddressLineIndex()
         String city = addresses.get(0).getLocality();
         String country = addresses.get(0).getCountryName();
         String postalCode = addresses.get(0).getPostalCode();
+        //end address
+
+        //address of mylocation
+        String titleMarker = getString(R.string.google_maps_address_window_title);
+        String myAddress = address + ", " + postalCode + " " + city + ", " + country;
 
         //Place current location marker
         LatLng latLng = new LatLng(latitude, longitude);
         mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
                 .position(latLng)
-                .title("Uw Locatie")
-                .snippet(address + ", " + postalCode + " " + city + ", " + country) // no idea to add multiple lines
+                .title(titleMarker)
+                .snippet(myAddress) // no idea to add multiple lines
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
 
         mCurrLocationMarker.showInfoWindow();
@@ -270,9 +279,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     }
 
                 } else {
-
+                    String gpsPermissionDenied = getString(R.string.gps_permission_denied);
                     // Permission denied, Disable the functionality that depends on this permission.
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, gpsPermissionDenied, Toast.LENGTH_LONG).show();
                 }
                 return;
             }
@@ -285,7 +294,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     }
                 } else {
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    String phoneCallPermissionDenied = getString(R.string.phone_call_permission_denied);
+                    Toast.makeText(this, phoneCallPermissionDenied, Toast.LENGTH_LONG).show();
                 }
                 return;
             }
