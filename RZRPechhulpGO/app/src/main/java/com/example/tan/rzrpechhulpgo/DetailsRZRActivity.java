@@ -23,6 +23,7 @@ public class DetailsRZRActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.info_back_button);
 
 
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
