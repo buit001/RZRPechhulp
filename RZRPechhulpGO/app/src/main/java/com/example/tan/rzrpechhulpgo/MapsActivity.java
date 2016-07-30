@@ -40,8 +40,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener {
 
-    private static final int MY_PERMISSIONS_REQUEST_CALL = 1;
-    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
+
     private GoogleMap mMap;
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
@@ -50,6 +49,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Geocoder geocoder;
     private List<android.location.Address> addresses;
     private Button phoneCallButton;
+
+    //Permission OK code
+    private static final int MY_PERMISSIONS_REQUEST_CALL = 1;
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99;
 
 
     @Override
