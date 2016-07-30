@@ -28,6 +28,7 @@
     <string name="phone_call_popup_message_decline">decline</string>
 
     <string name="google_maps_address_window_title">Uw Locatie</string>
+    <string name="google_maps_address_window_description">Onthoud deze locatie voor het telefoongesprek</string>
 
     <string name="gps_permission_denied">permission denied</string>
     <string name="phone_call_permission_denied">permission denied</string>

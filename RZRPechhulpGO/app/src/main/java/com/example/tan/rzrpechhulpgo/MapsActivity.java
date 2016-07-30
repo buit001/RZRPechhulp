@@ -80,6 +80,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+
+
+
+
         phoneCallButton = (Button) findViewById(R.id.phoneCall);
         phoneCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,9 +191,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onLocationChanged(Location location) {
         mLastLocation = location;
+
         if (mCurrLocationMarker != null) {
             mCurrLocationMarker.remove();
         }
+
         //coordinates
         double latitude = location.getLatitude();
         double longitude = location.getLongitude();
@@ -211,20 +217,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //address of mylocation
         String titleMarker = getString(R.string.google_maps_address_window_title);
-        String myAddress = address + ", " + postalCode + " " + city + ", " + country;
+        final String myAddress = address + ", " + postalCode + " " + city + ", " + country;
 
         //Place current location marker
         LatLng latLng = new LatLng(latitude, longitude);
-        mCurrLocationMarker = mMap.addMarker(new MarkerOptions()
-                .position(latLng)
-                .title(titleMarker)
-                .snippet(myAddress) // no idea to add multiple lines
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker)));
+
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.position(latLng);
+        markerOptions.title(titleMarker);
+        markerOptions.snippet(myAddress);
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker));
+
+        mCurrLocationMarker = mMap.addMarker(markerOptions);
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(getLayoutInflater()));
 
         mCurrLocationMarker.showInfoWindow();
+
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
+
+
+
 
         //stop location updates
         if (mGoogleApiClient != null) {
