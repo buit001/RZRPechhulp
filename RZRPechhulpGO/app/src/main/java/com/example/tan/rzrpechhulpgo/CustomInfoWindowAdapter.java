@@ -1,5 +1,6 @@
 package com.example.tan.rzrpechhulpgo;
 
+import android.graphics.Color;
 import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +24,6 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
     @Override
     public View getInfoWindow(Marker marker) {
-        return null;
-    }
-
-    @Override
-    public View getInfoContents(Marker marker) {
         View view = inflater.inflate(R.layout.info_window, null);
 
         TextView title = (TextView) view.findViewById(R.id.titleInfoWindow);
@@ -35,9 +31,19 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         TextView description = (TextView) view.findViewById(R.id.description);
 
         title.setText(marker.getTitle());
+        title.setTextColor(Color.WHITE);
+
         snippet.setText(marker.getSnippet());
+        snippet.setTextColor(Color.WHITE);
+
         description.setText(R.string.google_maps_address_window_description);
+        description.setTextColor(Color.WHITE);
 
         return view;
+    }
+
+    @Override
+    public View getInfoContents(Marker marker) {
+        return null;
     }
 }

@@ -230,6 +230,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker));
 
         mCurrLocationMarker = mMap.addMarker(markerOptions);
+
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(getLayoutInflater()));
 
         mCurrLocationMarker.showInfoWindow();
