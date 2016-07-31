@@ -36,8 +36,9 @@
           />
         <activity
             android:name=".DetailsRZRActivity"
-            android:label="@string/title_activity_details_rzr"
+            android:label=""
             android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"
             />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

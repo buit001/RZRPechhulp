@@ -61,7 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.info_back_button);
+        toolbar.setNavigationIcon(R.drawable.maps_back_button);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,9 +79,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
-
 
 
         phoneCallButton = (Button) findViewById(R.id.phoneCall);

@@ -1,32 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:background="@color/infowindowcolor"
-    android:orientation="vertical">
+    android:orientation="horizontal"
+    >
 
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/titleInfoWindow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            />
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/snippet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+    <TextView
+        android:id="@+id/titleInfoWindow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="18dp"
+        android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
-    </LinearLayout>
-</LinearLayout>
+    <TextView
+        android:id="@+id/snippet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleInfoWindow"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/snippet" />
+</RelativeLayout>
+</RelativeLayout>
