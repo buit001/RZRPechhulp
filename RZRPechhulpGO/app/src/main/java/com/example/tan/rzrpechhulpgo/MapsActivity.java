@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.*;
 import android.net.Uri;
 import android.os.Build;
@@ -82,6 +83,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         phoneCallButton = (Button) findViewById(R.id.phoneCall);
+        phoneCallButton.setTextColor(Color.WHITE);
         phoneCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

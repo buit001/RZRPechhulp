@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/custom_vertical_margin"
     android:background="@drawable/main_edit_new"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.tan.rzrpechhulpgo.MainActivity"
     tools:showIn="@layout/activity_main">
 
 
-    <Button
+    <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button"
-        android:background="@drawable/rzr_location_button"
+        android:id="@+id/rsr_pechhulp_button"
+        android:background="@drawable/rzr_location_button_new"
+        android:layout_gravity="bottom"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="bottom" />
-</LinearLayout>
+        />
+
+
+</RelativeLayout>

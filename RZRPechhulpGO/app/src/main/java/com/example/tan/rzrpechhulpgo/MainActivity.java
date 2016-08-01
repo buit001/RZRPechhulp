@@ -14,10 +14,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button rsrPechhulpButton;
+    private ImageButton rsrPechhulpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        rsrPechhulpButton = (Button) findViewById(R.id.button);
+        rsrPechhulpButton = (ImageButton) findViewById(R.id.rsr_pechhulp_button);
         rsrPechhulpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
