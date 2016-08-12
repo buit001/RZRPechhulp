@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/custom_vertical_margin"
-    android:background="@drawable/main_edit_new"
+    android:background="@drawable/main_bg"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.tan.rzrpechhulpgo.MainActivity"
     tools:showIn="@layout/activity_main">

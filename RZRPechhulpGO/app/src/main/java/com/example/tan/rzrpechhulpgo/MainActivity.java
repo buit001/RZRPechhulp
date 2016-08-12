@@ -1,32 +1,19 @@
 package com.example.tan.rzrpechhulpgo;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
+import android.view.View;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ImageButton rsrPechhulpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         rsrPechhulpButton = (ImageButton) findViewById(R.id.rsr_pechhulp_button);
         rsrPechhulpButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,24 +23,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        //checks gps enabled
-        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            buildAlertMessageNoGps();
-        }
-        //check if internet connection can be established
-        if (!isOnline()){
-            buildAlertMessageNoConnection();
-        }
-
     }
 
     @Override
-    protected void onResume(){
-        super.onResume();
-        if (!isOnline()){
-            buildAlertMessageNoConnection();
-        }
+    public int getLayoutResource() {
+        return R.layout.activity_main;
     }
 
     @Override
@@ -79,55 +53,5 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //checks if internet connection is available
-    public boolean isOnline() {
-        ConnectivityManager cm =
-                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
 
-    private void buildAlertMessageNoGps() {
-        String gpsDisabledMessage = getString(R.string.gps_disabled_popup_message);
-        String gpsMessageConfirm = getString(R.string.gps_disabled_popup_message_confirm);
-        String gpsMessageDecline = getString(R.string.gps_disabled_popup_message_decline);
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(gpsDisabledMessage)
-                .setCancelable(false)
-                .setPositiveButton(gpsMessageConfirm, new DialogInterface.OnClickListener() {
-                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                })
-                .setNegativeButton(gpsMessageDecline, new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        finish();
-                    }
-                });
-        final AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-    private void buildAlertMessageNoConnection() {
-        String internetDisabledMessage = getString(R.string.internet_disabled_popup_message);
-        String internetMessageConfirm = getString(R.string.internet_disabled_popup_message_confirm);
-        String internetMessageDecline = getString(R.string.internet_disabled_popup_message_decline);
-
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(internetDisabledMessage)
-                .setCancelable(false)
-                .setPositiveButton(internetMessageConfirm, new DialogInterface.OnClickListener() {
-                    public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        onResume();
-                    }
-                })
-                .setNegativeButton(internetMessageDecline, new DialogInterface.OnClickListener() {
-                    public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        finish();
-                    }
-                });
-        final AlertDialog alert = builder.create();
-        alert.show();
-    }
 }
