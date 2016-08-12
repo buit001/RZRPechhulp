@@ -42,6 +42,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/toolbarcolor"
             android:text="Bel RSR nu"
+            android:textColor="@color/white"
             android:padding="16dp"
             android:drawableLeft="@drawable/main_btn_tel"/>
     </RelativeLayout>

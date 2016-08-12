@@ -14,14 +14,27 @@
     tools:showIn="@layout/activity_main">
 
 
-    <ImageButton
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/custom_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rsr_pechhulp_button"
-        android:background="@drawable/rzr_location_button_new"
+        android:background="@color/toolbarcolor"
         android:layout_gravity="bottom"
+        android:text="Bel RSR nu"
+        android:textColor="@color/white"
+        android:padding="16dp"
         android:layout_alignParentBottom="true"
+        android:drawableLeft="@drawable/main_btn_warning"
         />
+    </RelativeLayout>
 
 
 </RelativeLayout>

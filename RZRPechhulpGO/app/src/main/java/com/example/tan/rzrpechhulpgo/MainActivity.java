@@ -5,16 +5,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 
 public class MainActivity extends BaseActivity {
 
-    private ImageButton rsrPechhulpButton;
+    private Button rsrPechhulpButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rsrPechhulpButton = (ImageButton) findViewById(R.id.rsr_pechhulp_button);
+        rsrPechhulpButton = (Button) findViewById(R.id.rsr_pechhulp_button);
         rsrPechhulpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

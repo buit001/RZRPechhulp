@@ -46,15 +46,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
-
-            if (!isOnline()) {
-                buildAlertMessageNoConnection();
-            }
+        }
+        if (!isOnline()) {
+            buildAlertMessageNoConnection();
         }
     }
 
 
-    //checks if internet connection is available
+        //checks if internet connection is available
+
     public boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
