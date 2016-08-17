@@ -18,6 +18,7 @@ public class MainActivity extends BaseActivity {
         rsrPechhulpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                rsrPechhulpButton.setBackgroundResource(R.drawable.selector);
                 Intent intent = new Intent(MainActivity.this, MapsActivity.class);
                 startActivity(intent);
             }

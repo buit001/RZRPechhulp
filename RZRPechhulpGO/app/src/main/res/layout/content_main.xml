@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/rsr_pechhulp_button"
-        android:background="@color/toolbarcolor"
+        android:background="@drawable/btn_bg"
         android:layout_gravity="bottom"
         android:text="Bel RSR nu"
         android:textColor="@color/white"

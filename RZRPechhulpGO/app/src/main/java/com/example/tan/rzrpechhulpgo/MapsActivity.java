@@ -88,6 +88,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         phoneCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                phoneCallButton.setBackgroundResource(R.drawable.selector);
                 buildAlertMessagePhoneCall();
             }
 
