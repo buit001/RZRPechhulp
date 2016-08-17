@@ -10,6 +10,7 @@
         \n \nWilt u meer weten over onze producten en diensten, kijk dan op www.rsr.nl of bezoek onze showrooms in Silvolde en Nieuwleusen. We zijn iedere werkdag geopend van 8.00
         tot 17.00 uur. Hier kunt u diversze hulpmiddelen uitproberen en rustig bekijken wat goed bij uw situatie aansluit. Samen met u zoeken we naar het hulpmiddel dat bij u past.
         RSR maakt mensen mobiel.</string>
+    <string name="back_button_description_details">Over RSR</string>
 
     <!--MainActivity-->
     <string name="gps_disabled_popup_message">Your GPS seems to be disabled, do you want to enable it?</string>
@@ -23,6 +24,7 @@
     <!--MapsActivity-->
     <string name="title_activity_maps">Map</string>
 
+    <string name="back_button_description_maps">RSR Pechhulp</string>
     <string name="phone_call_popup_message">Voor dit nummer betaalt u uw gebruikelijke kosten</string>
     <string name="phone_call_popup_message_confirm">bellen</string>
     <string name="phone_call_popup_message_decline">decline</string>

@@ -6,13 +6,15 @@ import android.view.View;
 
 public class DetailsRZRActivity extends BaseActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.info_back_button);
 
+        toolbar.setNavigationIcon(R.drawable.menu_arrow);
+        toolbar.setTitle(getResources().getString(R.string.back_button_description_details));
+        setSupportActionBar(toolbar);
 
         toolbar.setNavigationOnClickListener(   new View.OnClickListener() {
             @Override
