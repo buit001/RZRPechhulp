@@ -1,34 +1,43 @@
 package com.example.tan.rzrpechhulpgo;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
+
+import butterknife.BindDrawable;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
-    private Button rsrPechhulpButton;
+    @BindDrawable(R.drawable.selector)
+    Drawable selector;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        rsrPechhulpButton = (Button) findViewById(R.id.rsr_pechhulp_button);
-        rsrPechhulpButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rsrPechhulpButton.setBackgroundResource(R.drawable.selector);
-                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
+        ButterKnife.bind(this);
+    }
 
+    @OnClick(R.id.rsr_pechhulp_button)
+    public void RSRPechhulp(Button rsrPechhulpButton) {
+        rsrPechhulpButton.setBackground(selector);
+        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(intent);
     }
 
     @Override
     public int getLayoutResource() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    public void customizeToolbar() {
+        //toolbar code added here
     }
 
     @Override

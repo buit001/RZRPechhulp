@@ -11,17 +11,24 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by Tan on 11-8-2016.
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+    //Bindings
+    @BindView(R.id.toolbar) Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResource());
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //Butterknife Injection
+        ButterKnife.bind(this);
+        //initialise toolbar
         setSupportActionBar(toolbar);
 
         final LocationManager manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -29,7 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             buildAlertMessageNoGps();
         }
-        //check if internet connection can be established
+//        check if internet connection can be established
         if (!isOnline()) {
             buildAlertMessageNoConnection();
         }
@@ -39,6 +46,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public abstract int getLayoutResource();
 
+    public abstract void customizeToolbar();
 
     @Override
     protected void onResume() {
@@ -54,7 +62,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
 
         //checks if internet connection is available
-
     public boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
